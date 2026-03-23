@@ -52,15 +52,15 @@ export const siteConfig = {
     },
     {
       name: {
-        es: "Proyecto 2",
-        en: "Project 2",
+        es: "NEWEN Launcher",
+        en: "NEWEN Launcher",
       },
       description: {
-        es: "Próximamente",
-        en: "Coming soon",
+        es: "Launcher moderno para Minecraft con foco en orden, confianza y rendimiento. Pensado para la comunidad hispanohablante, centraliza la gestión de instancias, loaders y Java, e integra catálogo de mods y modpacks con diagnóstico claro y desarrollo público.",
+        en: "Modern Minecraft launcher focused on order, trust, and performance. Built for the Spanish-speaking community, it centralizes instance, loader, and Java management, and includes an integrated mods/modpacks catalog with clear diagnostics and public development tracking.",
       },
-      link: "",
-      skills: ["React", "Node.js"],
+      link: "https://ormazabaldev.github.io/newen-web/",
+      skills: ["React", "Vite", "Windows", "GitHub"],
     },
     {
       name: {
