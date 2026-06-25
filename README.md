@@ -1,115 +1,83 @@
-# Portfolio de Diego Ormazábal
+# DevOrmazabal | Desarrollo de Software y Automatizaciones
 
-Portafolio personal interactivo construido con [Astro](https://astro.build) y [Tailwind CSS v4](https://tailwindcss.com).
+Este es el sitio web profesional y landing page de la marca personal **DevOrmazabal** (Diego Ormazabal), enfocado en el desarrollo de software a medida, automatización de procesos operativos, integraciones de APIs y soluciones tecnológicas para negocios y profesionales independientes.
 
-## ✨ Características
-
-- 🌍 **Sistema bilingüe** - Español e Inglés con selector de idioma
-- 🔄 **Animaciones multiidioma** - Rotación automática de saludos en 10 idiomas diferentes
-- 🎨 **Diseño moderno y minimalista** - Interfaz limpia y profesional
-- 📱 **Totalmente responsive** - Adaptable a todos los dispositivos
-- ⚡ **Optimizado para rendimiento** - Construido con Astro para máxima velocidad
-- 🎯 **Fácil personalización** - Un solo archivo de configuración (`src/config.ts`)
-- 💾 **Persistencia de preferencias** - El idioma seleccionado se guarda en localStorage
-
-## 🚀 Instalación
-
-Clona el repositorio e instala las dependencias:
-
-```bash
-npm install
-```
-
-## 🛠️ Desarrollo
-
-Inicia el servidor de desarrollo:
-
-```bash
-npm run dev
-```
-
-Visita `http://localhost:4321` para ver tu sitio.
-
-## ⚙️ Configuración
-
-Edita el archivo `src/config.ts` para personalizar tu información:
-
-- Nombre y título profesional (bilingüe)
-- Sección Sobre Mí (bilingüe)
-- Habilidades técnicas
-- Proyectos (bilingüe)
-- Experiencia laboral (bilingüe)
-- Educación (bilingüe)
-- Enlaces de redes sociales
-
-## 📦 Construcción para Producción
-
-Construye el sitio para producción:
-
-```bash
-npm run build
-```
-
-Vista previa de la construcción de producción:
-
-```bash
-npm run preview
-```
-
-## 🌐 Deploy en GitHub Pages
-
-El sitio se despliega automáticamente usando GitHub Actions. Cada push a la rama `main` activa el workflow de deployment.
-
-**URL del sitio:** https://ormazabaldev.github.io/devportfolio-master/
-
-## 🛠️ Tecnologías
-
-- [Astro](https://astro.build) - Framework web estático
-- [Tailwind CSS v4](https://tailwindcss.com) - Framework CSS con plugin Vite
-- [TypeScript](https://www.typescriptlang.org/) - Tipado estático
-- JavaScript vanilla - Para animaciones y funcionalidad interactiva
-
-## 📝 Estructura del Proyecto
-
-```
-devportfolio-master/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml       # GitHub Actions workflow
-├── public/
-│   └── favicon.svg          # Favicon del sitio
-├── src/
-│   ├── components/          # Componentes Astro
-│   │   ├── About.astro      # Sección Sobre Mí
-│   │   ├── Education.astro  # Sección Educación
-│   │   ├── Experience.astro # Sección Experiencia
-│   │   ├── Footer.astro     # Footer del sitio
-│   │   ├── Header.astro     # Header con navegación
-│   │   ├── Hero.astro       # Sección Hero/Intro
-│   │   └── Projects.astro   # Showcase de proyectos
-│   ├── pages/
-│   │   └── index.astro      # Página principal
-│   ├── scripts/
-│   │   └── lang-switcher.ts # Lógica del selector de idioma
-│   ├── styles/
-│   │   └── global.css       # Estilos globales
-│   └── config.ts            # Configuración del sitio
-├── astro.config.mjs         # Configuración de Astro
-├── package.json             # Dependencias del proyecto
-└── tsconfig.json            # Configuración de TypeScript
-```
-
-## 📄 Licencia
-
-Este proyecto es de código abierto y está disponible bajo la licencia MIT.
-
-## 👤 Autor
-
-**Diego Ormazábal**
-- GitHub: [@OrmazabalDev](https://github.com/OrmazabalDev)
-- LinkedIn: [Diego Ormazábal](https://www.linkedin.com/in/diego-ormazabal-m)
-- Email: ormazabal.dev@gmail.com
+El sitio ha sido diseñado con una estética limpia, seria y corporativa, utilizando tecnologías web estándar de alto rendimiento, optimizado para ser completamente responsive y auto-contenido.
 
 ---
 
-*Template original por [Ryan Fitzgerald](https://github.com/RyanFitzgerald), personalizado y mejorado por Diego Ormazábal.*
+## 🚀 Características del Sitio
+
+- ⚡ **Carga ultrarrápida:** Construido en HTML5, CSS3 y JavaScript Vanilla sin frameworks innecesarios que añadan sobrecarga.
+- 📱 **Totalmente responsive:** Diseño móvil adaptado a todo tipo de pantallas (móviles, tablets y pantallas de escritorio).
+- 🎨 **Estilo premium y serio:** Paleta de colores cuidada con azul marino de marca (`#001B68`) y azul vibrante (`#0B73FF`).
+- 🤖 **Interacciones fluidas:** Menú hamburguesa accesible, scroll spy para navegación dinámica, Intersection Observer para revelado progresivo de componentes y animaciones optimizadas en CSS.
+- ✉️ **Contacto optimizado:** Plantilla pre-cargada para solicitudes técnicas mediante un enlace `mailto:` directo al correo principal.
+- 🔍 **SEO e Indexación:** Etiquetas de optimización básicas y Open Graph integradas para vistas previas pulidas en redes sociales como LinkedIn o WhatsApp.
+
+---
+
+## 🛠️ Stack Tecnológico
+
+- **Frontend:** HTML5, CSS3 (estilos propios) y JavaScript Vanilla.
+- **Framework de Estilo:** Tailwind CSS (utilizado mediante CDN para simplificar el flujo y asegurar su portabilidad sin compilar Node.js).
+- **Tipografía:** [Inter](https://fonts.google.com/specimen/Inter) y [Fira Code](https://fonts.google.com/specimen/Fira+Code).
+- **Alojamiento:** GitHub Pages.
+
+---
+
+## 📁 Estructura del Repositorio
+
+La arquitectura del proyecto sigue una estructura estática limpia recomendada para GitHub Pages:
+
+```text
+/
+├── index.html              # Landing page principal
+├── css/
+│   └── styles.css          # Reglas CSS, animaciones y fondos personalizados
+├── js/
+│   └── main.js             # Lógica del menú móvil, scroll spy y revelado
+├── assets/
+│   ├── logo/
+│   │   └── devormazabal-logo.png  # Logo oficial de la marca
+│   ├── img/
+│   │   └── og-devormazabal.png    # Imagen de previsualización para redes (Open Graph)
+│   └── favicon/
+│       └── favicon.png            # Icono del navegador
+├── .github/
+│   └── workflows/
+│       └── deploy.yml       # Automatización de despliegue a GitHub Pages
+├── .gitignore              # Archivos excluidos del control de versiones
+└── README.md               # Este archivo de documentación
+```
+
+---
+
+## 🌐 Publicación en GitHub Pages
+
+Este proyecto incluye un archivo de GitHub Actions que despliega automáticamente el sitio en GitHub Pages con cada push realizado a la rama principal (`main`).
+
+### Opción A: Despliegue Automático (Recomendado)
+1. Sube tu código al repositorio en GitHub.
+2. Ve a la pestaña **Settings** (Configuración) de tu repositorio en GitHub.
+3. En el menú lateral izquierdo, haz clic en **Pages**.
+4. En la sección **Build and deployment**:
+   - En **Source**, selecciona **GitHub Actions**.
+5. Con esto, cada vez que hagas `git push origin main`, GitHub compilará y desplegará tu sitio automáticamente en pocos segundos.
+
+### Opción B: Despliegue Manual (Desde Rama)
+Si prefieres no usar GitHub Actions:
+1. Ve a la pestaña **Settings** (Configuración) -> **Pages**.
+2. En la sección **Build and deployment**:
+   - En **Source**, selecciona **Deploy from a branch**.
+   - En **Branch**, selecciona la rama `main` y la carpeta `/ (root)`.
+3. Haz clic en **Save**. Tu sitio estará en línea en un par de minutos.
+
+---
+
+## 👤 Autor
+
+**Diego Ormazabal**
+- **GitHub:** [@OrmazabalDev](https://github.com/OrmazabalDev)
+- **Correo Electrónico:** ormazabal.dev@gmail.com
+- **Servicios:** Desarrollo de Software · Automatización de Procesos · Soluciones a Medida.

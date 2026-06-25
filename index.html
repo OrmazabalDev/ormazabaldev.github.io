@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Básico -->
+    <title>DevOrmazabal | Desarrollo de Software</title>
+    <meta name="description" content="Del problema al sistema funcionando. Desarrollo de software, aplicaciones web, automatización de procesos y soluciones digitales a medida.">
+    <meta name="keywords" content="desarrollo de software, aplicaciones web, programador freelance, automatización, WordPress, Python, Flask, DevOrmazabal, Diego Ormazabal">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="DevOrmazabal | Desarrollo de Software">
+    <meta property="og:description" content="Del problema al sistema funcionando. Soluciones digitales a medida.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/img/og-devormazabal.png"> 
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/favicon.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Segoe UI', 'Arial', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#001B68',
+                            blue: '#0B73FF',
+                            dark: '#111827',
+                            gray: '#374151',
+                            light: '#F8F8F8',
+                            border: '#E5E7EB',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'card': '0 10px 30px -5px rgba(0, 27, 104, 0.05)',
+                        'tech': '0 0 0 1px rgba(11, 115, 255, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Hojas de estilo personalizadas -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-white relative">
+
+    <!-- Grid de fondo tecnológico global -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] bg-tech-grid opacity-40"></div>
+
+    <!-- HEADER STICKY -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#inicio" class="flex items-center gap-3 group relative">
+                    <div class="w-11 h-11 bg-brand-navy rounded-xl flex items-center justify-center font-bold text-xl shadow-sm group-hover:shadow-md transition-shadow relative overflow-hidden">
+                        <!-- Destello hover -->
+                        <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></div>
+                        <span class="text-white relative z-10">D</span><span class="text-brand-blue relative z-10">O</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-xl tracking-tight leading-none"><span class="text-brand-navy">Dev</span><span class="text-brand-blue">Ormazabal</span></span>
+                        <span class="text-[0.65rem] font-semibold text-brand-gray tracking-[0.15em] mt-1 uppercase">DESARROLLO DE SOFTWARE</span>
+                    </div>
+                </a>
+
+                <!-- Menú Desktop -->
+                <nav class="hidden lg:flex space-x-8 items-center">
+                    <a href="#inicio" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Inicio</a>
+                    <a href="#servicios" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Servicios</a>
+                    <a href="#sobre-mi" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Sobre mí</a>
+                    <a href="#proceso" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Proceso</a>
+                    <a href="#casos-uso" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Casos de uso</a>
+                    <a href="#tecnologias" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors">Tecnologías</a>
+                    <a href="#contacto" class="nav-link text-sm font-medium text-brand-gray hover:text-brand-blue transition-colors mr-2">Contacto</a>
+                    <a href="#contacto" class="px-5 py-2.5 rounded-lg bg-brand-navy text-white text-sm font-medium hover:bg-brand-blue transition-colors shadow-soft flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Solicitar evaluación
+                    </a>
+                </nav>
+
+                <!-- Menú Hamburguesa Móvil -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-navy p-1 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue" aria-label="Abrir menú" aria-expanded="false">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Menú Móvil -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-brand-border absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#inicio" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Inicio</a>
+                <a href="#servicios" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Servicios</a>
+                <a href="#sobre-mi" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Sobre mí</a>
+                <a href="#proceso" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Proceso</a>
+                <a href="#casos-uso" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Casos de uso</a>
+                <a href="#tecnologias" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Tecnologías</a>
+                <a href="#contacto" class="block px-3 py-3 rounded-md text-base font-medium text-brand-dark hover:bg-brand-light hover:text-brand-blue">Contacto</a>
+                <a href="#contacto" class="block w-full text-center mt-4 px-5 py-3 rounded-lg bg-brand-navy text-white text-base font-medium hover:bg-brand-blue transition-colors">Solicitar evaluación</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section id="inicio" class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Textos Hero: Narrativa de Transformación -->
+                <div class="fade-in-up">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-brand-border shadow-sm mb-6">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-blue opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-blue"></span>
+                        </span>
+                        <span class="text-xs font-semibold text-brand-gray tracking-wide">Disponible para nuevos desarrollos y mejoras digitales</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight tracking-tight mb-6">
+                        Del problema al <span class="text-gradient">sistema funcionando</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-brand-gray mb-8 leading-relaxed">
+                        Desarrollo soluciones web y automatizaciones para transformar procesos desordenados en herramientas digitales simples, mantenibles y listas para usarse.
+                    </p>
+                    
+                    <!-- Chips de promesa técnica -->
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span class="text-[11px] font-mono bg-white border border-gray-200 text-brand-navy px-2.5 py-1 rounded shadow-sm">Diagnóstico_operativo</span>
+                        <span class="text-[11px] font-mono bg-white border border-gray-200 text-brand-navy px-2.5 py-1 rounded shadow-sm">Datos_ordenados</span>
+                        <span class="text-[11px] font-mono bg-white border border-gray-200 text-brand-navy px-2.5 py-1 rounded shadow-sm">Desarrollo_a_medida</span>
+                        <span class="text-[11px] font-mono bg-brand-navy text-white px-2.5 py-1 rounded flex items-center gap-1 shadow-sm">
+                            <svg class="w-3 h-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg> Deploy_exitoso
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="mailto:ormazabal.dev@gmail.com?subject=Solicitud%20de%20evaluación%20técnica%20-%20DevOrmazabal&body=Hola%20Diego%2C%0A%0ATengo%20un%20proyecto%20o%20proceso%20que%20me%20gustar%C3%ADa%20evaluar.%0A%0A-%20Proceso%20a%20resolver%20o%20automatizar%3A%20%0A-%20Tipo%20de%20desarrollo%20%28web%2C%20m%C3%B3vil%20o%20mejora%29%3A%20%0A-%20Fecha%20estimada%20de%20entrega%20%28o%20urgencia%29%3A%20%0A%0ASaludos." class="inline-flex justify-center items-center px-6 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-brand-blue hover:bg-brand-navy transition-colors shadow-soft">
+                            Enviar requerimiento
+                        </a>
+                        <a href="#servicios" class="inline-flex justify-center items-center px-6 py-3.5 border border-brand-border text-base font-medium rounded-lg text-brand-dark bg-white hover:bg-gray-50 transition-colors shadow-sm">
+                            Ver cómo trabajo
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mockup de Transformación DO System -->
+                <div class="relative mx-auto w-full max-w-lg lg:max-w-none fade-in-up delay-200 select-none">
+                    <div class="bg-white border border-brand-border rounded-2xl shadow-card relative overflow-hidden p-6 sm:p-8 flex flex-col gap-6">
+                        <!-- Marca de agua -->
+                        <div class="watermark-do text-[180px] -right-12 -bottom-16">DO</div>
+                        
+                        <!-- Header Mockup -->
+                        <div class="flex justify-between items-center z-10 border-b border-gray-100 pb-4">
+                            <div class="flex items-center gap-2">
+                                <div class="w-6 h-6 rounded bg-brand-navy text-white flex items-center justify-center text-[9px] font-bold">DO</div>
+                                <span class="text-xs font-mono text-brand-gray font-semibold">sys.devormazabal</span>
+                            </div>
+                            <span class="text-[10px] font-mono border text-brand-blue border-brand-blue/20 bg-blue-50 px-2 py-1 rounded-full flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-blue pulse-subtle"></span> Procesando
+                            </span>
+                        </div>
+                        
+                        <!-- Flujo de Transformación -->
+                        <div class="flex flex-col sm:flex-row items-stretch gap-4 z-10">
+                            
+                            <!-- Bloque 1: Problema -->
+                            <div class="flex-1 bg-gray-50 border border-dashed border-gray-300 rounded-xl p-4 flex flex-col gap-2.5 relative">
+                                <div class="text-[10px] font-bold text-gray-400 uppercase mb-2 flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                    Diagnóstico
+                                </div>
+                                <div class="bg-white p-2 text-[11px] border border-gray-200 rounded shadow-sm text-gray-400 line-through">Reportes manuales</div>
+                                <div class="bg-white p-2 text-[11px] border border-red-100 rounded shadow-sm text-red-500 font-medium border-l-2 border-l-red-500">Datos desordenados</div>
+                                <div class="bg-white p-2 text-[11px] border border-orange-100 rounded shadow-sm text-orange-500 font-medium border-l-2 border-l-orange-500">Proceso repetitivo</div>
+                            </div>
+                            
+                            <!-- Flecha / Conector -->
+                            <div class="hidden sm:flex flex-col justify-center items-center text-brand-blue px-2">
+                                <svg class="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                            </div>
+                            <div class="flex sm:hidden justify-center items-center text-brand-blue py-1">
+                                <svg class="w-6 h-6 animate-pulse rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+                            </div>
+
+                            <!-- Bloque 2: Solución DO -->
+                            <div class="flex-1 bg-brand-navy rounded-xl p-4 flex flex-col gap-2 relative overflow-hidden shadow-tech border border-brand-navy">
+                                <div class="text-[10px] font-bold text-blue-200 uppercase mb-2 flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                    DO System
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-sm p-2 text-[10px] border border-white/10 rounded text-white flex justify-between items-center">
+                                    <span>API sincronizada</span>
+                                    <svg class="w-3 h-3 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-sm p-2 text-[10px] border border-white/10 rounded text-white flex justify-between items-center">
+                                    <span>Automatización lista</span>
+                                    <svg class="w-3 h-3 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <div class="bg-white/10 backdrop-blur-sm p-2 text-[10px] border border-brand-blue/30 rounded text-blue-100 flex justify-between items-center relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-brand-blue/10"></div>
+                                    <span class="relative z-10 flex items-center gap-1.5">App Interna (Móvil)</span>
+                                    <svg class="w-3 h-3 text-brand-blue relative z-10 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                </div>
+
+                                <div class="mt-auto pt-2">
+                                    <div class="bg-green-500/20 text-green-300 p-2 text-[10px] rounded border border-green-500/30 font-bold flex justify-center items-center gap-1.5 uppercase tracking-wide">
+                                        <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span> Estado: Operativo
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-20 bg-white border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Áreas de trabajo</h2>
+                <h3 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-4">Servicios profesionales</h3>
+                <p class="text-lg text-brand-gray">Soluciones digitales pensadas para negocios, profesionales y equipos que necesitan avanzar sin complicarse con tecnología innecesaria.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Aplicaciones web a medida</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Desarrollo sistemas internos, paneles administrativos, formularios y herramientas adaptadas a tus procesos de negocio.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Paneles de gestión de datos</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Formularios y herramientas internas</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Dashboards interactivos</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Automatización de procesos</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Automatizo tareas repetitivas y flujos operativos para ahorrar horas de trabajo y evitar errores humanos.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Generación de reportes automáticos</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Flujos de trabajo repetitivos</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Clasificación y alertas automáticas</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Sitios web profesionales</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Diseño y desarrollo páginas web modernas, landing pages corporativas y secciones web optimizadas.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Landing pages corporativas</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Estructuras limpias en HTML/CSS/JS</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Sitios corporativos en WordPress / Elementor</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Apps móviles internas</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Desarrollo de aplicaciones Android nativas o híbridas de uso privado para simplificar las tareas de tu equipo.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Toma y registro de datos en terreno</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Catálogos privados y listas de control</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Aplicaciones ligeras para trabajadores</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 5 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Integraciones y APIs</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Conexión entre diferentes softwares y plataformas para automatizar la transferencia de datos y evitar dobles digitaciones.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Sincronización de herramientas operativas</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Consumo y procesamiento de APIs externas</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Reducción de carga administrativa</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 6 -->
+                <div class="bg-white rounded-2xl p-8 border border-brand-border card-hover relative overflow-hidden group reveal">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-light rounded-bl-full -z-10 group-hover:bg-blue-50 transition-colors duration-300"></div>
+                    <div class="w-12 h-12 bg-brand-navy rounded-xl flex items-center justify-center mb-6 text-white shadow-sm">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-brand-dark mb-3">Soporte y mejoras de software</h4>
+                    <p class="text-brand-gray mb-6 leading-relaxed text-sm">Apoyo técnico enfocado en solucionar problemas, implementar mejoras y documentar tus sistemas existentes.</p>
+                    <ul class="space-y-2.5">
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Corrección de errores y depuración (Bugs)</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Mejoras de rendimiento y visuales (UI/UX)</li>
+                        <li class="flex items-center text-sm text-brand-gray"><span class="w-1.5 h-1.5 rounded-full bg-brand-blue mr-2.5"></span>Documentación y optimización básica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ & VALOR DIFERENCIAL -->
+    <section id="sobre-mi" class="py-20 bg-brand-light border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-12 items-start reveal">
+                
+                <!-- Perfil -->
+                <div class="lg:w-1/3">
+                    <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Perfil Profesional</h2>
+                    <h3 class="text-3xl font-extrabold text-brand-dark mb-6">Sobre DevOrmazabal</h3>
+                    <div class="space-y-4 text-brand-gray leading-relaxed text-sm">
+                        <p>Soy <strong>Diego Ormazabal</strong>, Técnico en Programación y Análisis de Sistemas. Trabajo en el desarrollo de software, automatización de procesos y diseño de soluciones digitales para negocios y proyectos independientes.</p>
+                        <p>Mi enfoque está orientado a construir herramientas simples y funcionales, asegurando una comunicación transparente, entregando documentación clara y manteniendo una visión realista sobre el problema técnico que se busca resolver.</p>
+                    </div>
+                </div>
+
+                <!-- Bloque Valor Diferencial -->
+                <div class="lg:w-2/3 w-full bg-brand-navy rounded-2xl p-8 sm:p-10 text-white relative overflow-hidden shadow-card">
+                    <div class="watermark-do text-[150px] -right-10 -bottom-10 opacity-[0.03] text-white">DO</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-8 border-b border-white/10 pb-4">
+                            <svg class="w-6 h-6 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h4 class="text-xl sm:text-2xl font-bold">Garantías del servicio</h4>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Confidencialidad
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Resguardo absoluto de toda la información y datos sensibles vinculados a tu operación comercial o interna.</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Alcance definido
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Planificación clara de entregables, plazos y costos cerrados antes de iniciar la construcción del software.</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Código mantenible
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Uso de estructuras ordenadas y tecnologías estándar que facilitan la escalabilidad del sistema a largo plazo.</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Comunicación activa
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Reportes de avances continuos y decisiones técnicas explicadas de forma simple y en lenguaje comercial.</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Documentación de entrega
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Entrega de manuales básicos de operación y despliegue del sistema para garantizar el control total de tu herramienta.</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-sm text-white flex items-center gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span> Soporte posterior
+                                </div>
+                                <div class="text-xs text-blue-200 mt-1.5 leading-relaxed">Acompañamiento técnico post-entrega para corregir desviaciones o evaluar nuevas funcionalidades integradas.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO -->
+    <section id="proceso" class="py-20 bg-white border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Metodología</h2>
+                <h3 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-4 font-sans">Cómo trabajamos paso a paso</h3>
+                <p class="text-lg text-brand-gray font-sans">Un proceso ordenado diseñado para entregar software funcional, reduciendo la incertidumbre y controlando los plazos de entrega.</p>
+            </div>
+
+            <!-- Flujo de 5 pasos -->
+            <div class="relative reveal">
+                <!-- Línea de conexión Desktop -->
+                <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-brand-border -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 relative z-10">
+                    <!-- Paso 1 -->
+                    <div class="bg-brand-light lg:bg-white border border-brand-border rounded-xl p-6 flex flex-col items-center text-center shadow-soft">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm mb-4">1</div>
+                        <h4 class="font-bold text-brand-dark text-base mb-2">Levantamiento</h4>
+                        <p class="text-brand-gray text-xs leading-relaxed">Analizamos en detalle la necesidad operativa de tu negocio para definir exactamente qué debe resolver el sistema.</p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="bg-brand-light lg:bg-white border border-brand-border rounded-xl p-6 flex flex-col items-center text-center shadow-soft">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm mb-4">2</div>
+                        <h4 class="font-bold text-brand-dark text-base mb-2">Alcance y cotización</h4>
+                        <p class="text-brand-gray text-xs leading-relaxed">Definimos por escrito el alcance técnico de los entregables, tiempos y presupuesto exacto antes de iniciar.</p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="bg-brand-light lg:bg-white border border-brand-border rounded-xl p-6 flex flex-col items-center text-center shadow-soft">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm mb-4">3</div>
+                        <h4 class="font-bold text-brand-dark text-base mb-2">Desarrollo</h4>
+                        <p class="text-brand-gray text-xs leading-relaxed">Construcción progresiva de la solución con acceso a revisiones intermedias y pruebas continuas sobre los avances.</p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="bg-brand-light lg:bg-white border border-brand-border rounded-xl p-6 flex flex-col items-center text-center shadow-soft">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm mb-4">4</div>
+                        <h4 class="font-bold text-brand-dark text-base mb-2">Entrega</h4>
+                        <p class="text-brand-gray text-xs leading-relaxed">Realización de validaciones operativas y puesta en marcha del software en los servidores o entornos definitivos.</p>
+                    </div>
+
+                    <!-- Paso 5 -->
+                    <div class="bg-brand-light lg:bg-white border border-brand-border rounded-xl p-6 flex flex-col items-center text-center shadow-soft">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center text-sm mb-4">5</div>
+                        <h4 class="font-bold text-brand-dark text-base mb-2">Soporte</h4>
+                        <p class="text-brand-gray text-xs leading-relaxed">Periodo inicial de soporte ante incidencias y opción de contratar mantenimiento adaptativo o mejoras continuas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS DE USO -->
+    <section id="casos-uso" class="py-20 bg-brand-light border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Casos prácticos</h2>
+                <h3 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-4">Soluciones aplicadas en entornos reales</h3>
+                <p class="text-lg text-brand-gray">Ejemplos de cómo problemas de desorden o ineficiencia operativa se resuelven mediante el desarrollo de software y flujos automatizados.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Caso 1 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">Sistemas y Gestión</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Sistemas internos y gestión de datos</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Pérdida de control operativo y demoras debido a la gestión de información crítica mediante planillas locales desconectadas.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Desarrollo de un sistema web privado con bases de datos centralizadas, control de accesos de usuarios y carga estructurada de datos.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Acceso a la información en tiempo real, reducción total de registros duplicados y mayor trazabilidad del trabajo diario.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+
+                <!-- Caso 2 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">Operación Móvil</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Apps móviles para operación interna</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Escribir datos en fichas de papel en terreno genera retrasos en la carga y errores de legibilidad al digitalizar la información.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Creación de una aplicación móvil Android simple y offline-first para recopilar datos estructurados con validaciones en terreno.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Sincronización instantánea de datos al conectarse a red, eliminación del uso de papel y disponibilidad inmediata de reportes operativos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+
+                <!-- Caso 3 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">Visualización</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Dashboards y reportes automáticos</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Inversión de varias horas semanales de personal para recopilar datos de distintas fuentes y consolidar reportes en Excel.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Creación de un script en Python y base de datos local que procesa, unifica y actualiza visualizaciones en un dashboard centralizado.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Reportes dinámicos listos sin intervención manual y datos consolidados disponibles para la toma rápida de decisiones.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+
+                <!-- Caso 4 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">IA y Automatización</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Clasificación inteligente de información</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Revisar manualmente grandes volúmenes de correos, formularios o documentos internos puede tomar horas y generar errores en la organización de la información.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Desarrollo de un script, API o flujo automatizado que clasifica, etiqueta y extrae información relevante mediante reglas, filtros personalizados o integración con IA.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Menos tiempo revisando información manualmente, mayor orden en los datos y reducción de errores en procesos de revisión, filtro o priorización.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+
+                <!-- Caso 5 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">Web Corporativa</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Sitios corporativos y Landing Pages</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Sitios comerciales antiguos, lentos y difíciles de visualizar correctamente desde teléfonos celulares, afectando la imagen de la empresa.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Desarrollo completo de landing pages ligeras y limpias, 100% responsives, diseñadas bajo estándares web óptimos y código ágil.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Cargas en menos de un segundo, aumento del posicionamiento en buscadores y mejora significativa en la tasa de conversión comercial.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+
+                <!-- Caso 6 -->
+                <div class="bg-white rounded-2xl p-7 border border-brand-border flex flex-col justify-between reveal">
+                    <div>
+                        <span class="text-[10px] font-mono text-brand-blue border border-brand-blue/20 bg-blue-50 px-2.5 py-1 rounded-full uppercase tracking-wider font-semibold">Web Interactiva</span>
+                        <h4 class="text-lg font-bold text-brand-dark mt-4 mb-4">Secciones web interactivas</h4>
+                        <div class="space-y-3.5 mb-6">
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-gray">Problema:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Necesidad de mostrar simulaciones, calculadoras financieras o catálogos interactivos complejos dentro de plataformas existentes.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-brand-blue">Solución DevOrmazabal:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Desarrollo de módulos e incrustaciones interactivas ligeras construidas directamente en JavaScript Vanilla de alto rendimiento.</p>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold uppercase text-green-600">Resultado:</span>
+                                <p class="text-xs text-brand-gray mt-1 leading-relaxed">Integración limpia con plataformas actuales (WordPress, etc.) y experiencia interactiva fluida para los clientes del sitio.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="w-full text-center py-2.5 border border-brand-border hover:border-brand-blue hover:text-brand-blue text-xs font-bold rounded-lg text-brand-dark transition-colors bg-white">
+                        Consultar por una solución similar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECNOLOGÍAS -->
+    <section id="tecnologias" class="py-20 bg-white border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Herramientas</h2>
+                <h3 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-4">Stack tecnológico y de desarrollo</h3>
+                <p class="text-lg text-brand-gray">Lista de lenguajes, frameworks y entornos de infraestructura que utilizo para garantizar sistemas eficientes, adaptables y mantenibles.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                <!-- Stack 1: Frontend -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">01. Frontend</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Interfaces de usuario modernas</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">HTML5</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">CSS3</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">JavaScript</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Tailwind CSS</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- Stack 2: Backend -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">02. Backend & APIs</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Servicios e integraciones</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Python</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Flask</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">SQLite</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">APIs REST</span>
+                    </div>
+                </div>
+
+                <!-- Stack 3: Web y CMS -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">03. Web y Plataformas</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Gestores y hosting estático</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">WordPress</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Elementor</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">GitHub Pages</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Git / GitHub</span>
+                    </div>
+                </div>
+
+                <!-- Stack 4: Android -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">04. Android / Mobile</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Desarrollo móvil cerrado</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Android Nativo</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Apps Internas</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Formularios Móviles</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Prototipos UI</span>
+                    </div>
+                </div>
+
+                <!-- Stack 5: Automatización -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">05. Datos y Automatización</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Flujos de trabajo automáticos</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Google Sheets</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">AppSheet</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Google Drive API</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Reportes automáticos</span>
+                    </div>
+                </div>
+
+                <!-- Stack 6: Inteligencia Artificial -->
+                <div class="p-6 rounded-xl border border-brand-border bg-white shadow-soft">
+                    <span class="text-xs font-mono text-brand-blue font-bold tracking-wider uppercase block mb-3">06. IA y Productividad</span>
+                    <h4 class="text-base font-bold text-brand-dark mb-4">Optimización inteligente</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">APIs de IA</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Clasificación automática</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Optimización de prompts</span>
+                        <span class="px-2.5 py-1 text-xs font-mono bg-brand-light text-brand-gray rounded border border-brand-border">Asistencia técnica</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 bg-brand-light border-t border-brand-border/50 scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-8 sm:p-12 border border-brand-border shadow-card reveal relative overflow-hidden">
+                <div class="watermark-do text-[160px] -right-12 -bottom-16 opacity-[0.02]">DO</div>
+                
+                <div class="text-center max-w-2xl mx-auto mb-10 relative z-10">
+                    <h2 class="text-sm font-bold tracking-wide text-brand-blue uppercase mb-2">Solicitar Evaluación Técnica</h2>
+                    <h3 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-4">¿Necesitas automatizar o construir algo?</h3>
+                    <p class="text-brand-gray text-base">Cuéntame tu problema operativo actual. Podemos transformarlo en una solución digital clara y funcional.</p>
+                </div>
+
+                <!-- Bloque de guía para responder -->
+                <div class="bg-brand-light rounded-xl p-5 border border-brand-border mb-8 relative z-10">
+                    <h4 class="text-sm font-bold text-brand-navy mb-3 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Para una respuesta rápida, incluye en tu correo:
+                    </h4>
+                    <ul class="space-y-2 text-xs text-brand-gray">
+                        <li class="flex items-start gap-2"><span class="text-brand-blue font-bold mt-0.5">•</span> Qué problema necesitas resolver o qué proceso deseas automatizar.</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-blue font-bold mt-0.5">•</span> Si es un desarrollo web, una aplicación móvil interna o una mejora de un sistema existente.</li>
+                        <li class="flex items-start gap-2"><span class="text-brand-blue font-bold mt-0.5">•</span> Si existe alguna urgencia o fecha límite ideal para la entrega de la solución.</li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center gap-4 relative z-10">
+                    <!-- CTA Botón Correo -->
+                    <a href="mailto:ormazabal.dev@gmail.com?subject=Solicitud%20de%20evaluación%20técnica%20-%20DevOrmazabal&body=Hola%20Diego%2C%0A%0ATengo%20un%20proyecto%20o%20proceso%20que%20me%20gustar%C3%ADa%20evaluar.%0A%0A-%20Proceso%20a%20resolver%20o%20automatizar%3A%20%0A-%20Tipo%20de%20desarrollo%20%28web%2C%20m%C3%B3vil%20o%20mejora%29%3A%20%0A-%20Fecha%20estimada%20de%20entrega%20%28o%20urgencia%29%3A%20%0A%0ASaludos." class="inline-flex justify-center items-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-white bg-brand-blue hover:bg-brand-navy transition-colors shadow-soft gap-3">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Enviar requerimiento por correo
+                    </a>
+                    
+                    <!-- Correo electrónico explícito -->
+                    <div class="text-center mt-2">
+                        <span class="text-xs text-brand-gray block mb-1">Correo directo:</span>
+                        <a href="mailto:ormazabal.dev@gmail.com" class="text-sm font-mono font-bold text-brand-navy hover:text-brand-blue transition-colors border-b border-dashed border-brand-navy/30">ormazabal.dev@gmail.com</a>
+                    </div>
+
+                    <!-- Nota de respuesta -->
+                    <p class="text-xs text-brand-gray mt-4 text-center">
+                        Contacto exclusivamente por correo · Respuesta usual: 24 a 48 horas hábiles
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white py-12 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-white/10 pb-10">
+                <!-- Branding -->
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center font-bold text-base border border-white/10">
+                            <span class="text-white">D</span><span class="text-brand-blue">O</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-bold text-base tracking-tight leading-none">DevOrmazabal</span>
+                            <span class="text-[0.55rem] font-semibold text-blue-200 tracking-[0.15em] mt-0.5">DESARROLLO DE SOFTWARE</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-blue-200 mt-2 leading-relaxed max-w-sm">
+                        Del problema al sistema funcionando. Soluciones claras y prácticas adaptadas a tu flujo operativo.
+                    </p>
+                </div>
+
+                <!-- Links rápidos -->
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Navegación</h5>
+                    <div class="grid grid-cols-2 gap-2">
+                        <a href="#inicio" class="text-xs text-blue-200 hover:text-white transition-colors">Inicio</a>
+                        <a href="#servicios" class="text-xs text-blue-200 hover:text-white transition-colors">Servicios</a>
+                        <a href="#sobre-mi" class="text-xs text-blue-200 hover:text-white transition-colors">Sobre mí</a>
+                        <a href="#proceso" class="text-xs text-blue-200 hover:text-white transition-colors">Proceso</a>
+                        <a href="#casos-uso" class="text-xs text-blue-200 hover:text-white transition-colors">Casos de uso</a>
+                        <a href="#tecnologias" class="text-xs text-blue-200 hover:text-white transition-colors">Tecnologías</a>
+                    </div>
+                </div>
+
+                <!-- Datos de contacto directos -->
+                <div>
+                    <h5 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Contacto</h5>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2.5 text-xs text-blue-200">
+                            <svg class="w-4 h-4 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <a href="mailto:ormazabal.dev@gmail.com" class="hover:text-white transition-colors font-mono">ormazabal.dev@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-2.5 text-xs text-blue-200">
+                            <svg class="w-4 h-4 text-brand-blue flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Lunes a Viernes · 9:00 a 18:00 hrs</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-between items-center mt-8 gap-4">
+                <span class="text-xs text-blue-200/60 font-medium">Desarrollo web y automatización a medida</span>
+                <span class="text-xs text-blue-200/50">
+                    &copy; 2026 DevOrmazabal. Todos los derechos reservados.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts del sitio -->
+    <script src="js/main.js"></script>
+</body>
+</html>
